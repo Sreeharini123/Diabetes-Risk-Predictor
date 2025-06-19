@@ -2,12 +2,14 @@ import streamlit as st
 import numpy as np
 import pickle
 
-# Load trained model
-model = pickle.load(open("diabetes_rf_model.pkl", "rb"))
+# Load model
+with open("diabetes_rf_model.pkl", "rb") as f:
+    model = pickle.load(f)
 
 st.set_page_config(page_title="Diabetes Risk Predictor", layout="centered")
 st.title("💊 Diabetes Risk Predictor")
-st.markdown("Enter your health details to check your diabetes risk.")
+
+st.markdown("Enter your health info to predict diabetes risk:")
 
 # Input fields
 preg = st.number_input("Pregnancies", 0, 20, step=1)
@@ -23,8 +25,8 @@ if st.button("🔍 Predict"):
     user_data = np.array([[preg, glucose, bp, skin, insulin, bmi, dpf, age]])
     prediction = model.predict(user_data)[0]
     if prediction == 1:
-        st.error("🔴 High Risk: You may have diabetes. Please consult a doctor.")
+        st.error("🔴 High Risk: You may have diabetes.")
     else:
         st.success("🟢 Low Risk: You are unlikely to have diabetes.")
 
-st.caption("📊 Powered by a Random Forest Classifier trained on the PIMA Indian Diabetes Dataset.")
+st.caption("📊 Model: Random Forest | Dataset: PIMA Indian Diabetes | Accuracy: ~83%")
