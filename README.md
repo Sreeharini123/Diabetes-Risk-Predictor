@@ -21,5 +21,3 @@ Technologies Used:
 -Streamlit
 -Scikit-learn
 -Pandas, NumPy
-
-Live Demo:
