@@ -1,4 +1,5 @@
 Diabetes Risk Predictor 👩‍⚕️
+
 A machine learning–powered web app built with Streamlit to assess a person’s risk of diabetes based on basic health information. Trained using the PIMA Indian Diabetes Dataset and a Random Forest Classifier for improved accuracy.
 
 Features:
